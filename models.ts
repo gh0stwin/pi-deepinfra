@@ -190,6 +190,7 @@ export function fallbackModels(): Model<"openai-completions">[] {
 		["meta-llama/Llama-3.3-70B-Instruct", 131_072, 131_072, 0.2, 0.32, false, false],
 		["meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", 1_048_576, 1_048_576, 0.2, 0.8, false, true],
 		["google/gemma-3-27b-it", 131_072, 131_072, 0.08, 0.16, false, true],
+		["zai-org/GLM-5.3-Flash", 1_048_576, 1_048_576, 0.15, 0.5, true, true],
 		["mistralai/Mistral-Small-3.2-24B-Instruct-2506", 131_072, 131_072, 0.075, 0.2, false, false],
 		["google/gemini-3.1-pro", 1_000_000, 1_000_000, 2.0, 12.0, true, true],
 	];
