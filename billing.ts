@@ -157,10 +157,17 @@ export function createUsageFooter(pi: ExtensionAPI, providerId: string): UsageFo
 
 	return {
 		async onSessionStart(ctx) {
-			if (isActiveProvider(ctx)) {
-				await refreshMonthly(ctx);
+			// A display-only footer must never kill a session: pi can hand this
+			// handler a context that is no longer active (non-interactive runs,
+			// session replacement), and reading ctx.model then throws.
+			try {
+				if (isActiveProvider(ctx)) {
+					await refreshMonthly(ctx);
+				}
+				render(ctx);
+			} catch {
+				// stale ctx: skip the footer for this session
 			}
-			render(ctx);
 		},
 		onMessageEnd(_event, ctx) {
 			render(ctx);
